@@ -18,7 +18,7 @@ RUN curl -Lo notation.tar.gz https://github.com/notaryproject/notation/releases/
 RUN curl -Lo notation_0.9.0-alpha.1_linux_amd64.tar.gz https://github.com/notaryproject/notation/releases/download/v0.9.0-alpha.1/notation_0.9.0-alpha.1_linux_amd64.tar.gz \
     && mkdir -p notation-old-install \
     && tar -zxf notation_0.9.0-alpha.1_linux_amd64.tar.gz -C notation-old-install \
-    && mv ./notation-old-install/* ~/ \
+    && mv ./notation-old-install/* /home/vscode \
     && rm -rf ./notation_0.9.0-alpha.1_linux_amd64.tar.gz
 
 ARG ORAS_VERSION="0.15.0"

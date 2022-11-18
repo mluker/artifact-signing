@@ -14,6 +14,12 @@ RUN curl -Lo notation.tar.gz https://github.com/notaryproject/notation/releases/
     && tar -zxf notation.tar.gz \
     && mv ./notation /usr/local/bin/notation \
     && rm -rf ./notation.tar.gz
+   
+RUN curl -Lo notation_0.9.0-alpha.1_linux_amd64.tar.gz https://github.com/notaryproject/notation/releases/download/v0.9.0-alpha.1/notation_0.9.0-alpha.1_linux_amd64.tar.gz \
+    && mkdir -p notation-old-install \
+    && tar -zxf notation_0.9.0-alpha.1_linux_amd64.tar.gz -C notation-old-install \
+    && mv ./notation-old-install/* ~/ \
+    && rm -rf ./notation_0.9.0-alpha.1_linux_amd64.tar.gz
 
 ARG ORAS_VERSION="0.15.0"
 RUN curl -LO https://github.com/oras-project/oras/releases/download/v0.15.0/oras_${ORAS_VERSION}_linux_amd64.tar.gz \

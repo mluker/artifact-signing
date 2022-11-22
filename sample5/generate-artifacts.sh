@@ -11,8 +11,5 @@ docker build -t $IMAGE .
 # push image to registry
 docker push $IMAGE
 
-# create cert
-~/notation cert generate-test --trust --name notationv09 --default $REGISTRY
-
 # sign image
-~/notation sign $IMAGE
+~/notation sign -k notationv09 $IMAGE

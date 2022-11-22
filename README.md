@@ -20,8 +20,9 @@ A playground for working with:
     export REGISTRY=${ACR_NAME}.azurecr.io
     export REPONAME=helloworld
     export REPO=${REGISTRY}/${REPONAME}
-    export NOTATION_CERT_PATH="/home/vscode/.config/notation/localkeys/$REGISTRY.crt"  
+    export NOTATION_PATH_ROOT="/home/vscode/.config/notation"     
     export NOTATION_USERNAME=00000000-0000-0000-0000-000000000000
+    export SBOM_ARTIFACT_TYPE=application/spdx+json
     ```
 4. Login so ORAS and Notation can use the auth token
     ```
@@ -29,8 +30,15 @@ A playground for working with:
     <!-- make sure you are using the correct subscription -->
     az account set -s <subscription>    
     ```
+5. Generate new certs for all of the notation tasks to use. 
+    This will delete the certs from ~/.config/notation/localkeys|keys|certificate and remove them from notations key store. It will then generate new certs and add them all back to notations store. 
+    
+    Note: You will have to do this every day as the notation test certs are only valid for 1 day.
+    ```
+    ./generate-certs.sh
+    ```
 
-5. Get token and run available samples which will build/push all artifacts to your Azure Container Registry
+6. Get token and run available samples which will build/push all artifacts to your Azure Container Registry
     ```
     ./generate-all-artifacts.sh
     ```

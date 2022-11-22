@@ -11,23 +11,17 @@ docker build -t $IMAGE .
 # push image to registry
 docker push $IMAGE
 
-# create cert
-notation cert generate-test --default $REGISTRY
-
-# add cert to verification list
-notation cert add -n $REGISTRY "$NOTATION_CERT_PATH"
-
 # sign image
-notation sign $IMAGE
+notation sign -k $REGISTRY $IMAGE
 
 # generate sbom
 sbom-tool generate -b ./assets -bc ./src/myapp -pn ${REPONAME} -m ./sboms -pv 1.0 -ps acme -nsu ${REPONAME} -nsb https://${REGISTRY} -D true -V
 
 # attach sbom
-oras attach --artifact-type ${REGISTRY}.sbom.v0 $IMAGE ./sboms/_manifest/spdx_2.2/manifest.spdx.json
+oras attach --artifact-type $SBOM_ARTIFACT_TYPE $IMAGE ./sboms/_manifest/spdx_2.2/manifest.spdx.json
 
 # sign sbom
-notation sign $IMAGE@$(oras discover -o json --artifact-type ${REGISTRY}.sbom.v0 $IMAGE | jq -r ".referrers[0].digest")
+notation sign $IMAGE@$(oras discover -o json --artifact-type $SBOM_ARTIFACT_TYPE $IMAGE | jq -r ".referrers[0].digest") -k $REGISTRY
 
 
 

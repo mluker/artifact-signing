@@ -16,11 +16,12 @@ A playground for working with:
 2. Launch the devcontainer via codespaces
 3. Export the following ENV vars
     ```
-    export ACR_NAME=mslacr
+    export ACR_NAME=samplelacr
     export REGISTRY=${ACR_NAME}.azurecr.io
     export REPONAME=helloworld
     export REPO=${REGISTRY}/${REPONAME}
-    export NOTATION_PATH_ROOT="/home/vscode/.config/notation"     
+    #export NOTATION_PATH_ROOT="/home/vscode/.config/notation/truststore/x509/ca"
+    export NOTATION_PATH_ROOT="/home/vscode/.config/notation"
     export NOTATION_USERNAME=00000000-0000-0000-0000-000000000000
     export SBOM_ARTIFACT_TYPE=application/spdx+json
     ```
@@ -28,11 +29,11 @@ A playground for working with:
     ```
     az login
     <!-- make sure you are using the correct subscription -->
-    az account set -s <subscription>    
+    az account set -s <subscription>
     ```
-5. Generate new certs for all of the notation tasks to use. 
-    This will delete the certs from ~/.config/notation/localkeys|keys|certificate and remove them from notations key store. It will then generate new certs and add them all back to notations store. 
-    
+5. Generate new certs for all of the notation tasks to use.
+    This will delete the certs from ~/.config/notation/localkeys|keys|certificate and remove them from notations key store. It will then generate new certs and add them all back to notations store.
+
     Note: You will have to do this every day as the notation test certs are only valid for 1 day.
     ```
     ./generate-certs.sh
@@ -46,6 +47,6 @@ A playground for working with:
 ## Running samples ad hoc
 1. Execute steps 1-4 in the 'Get up and running' section
 2. Run a single sample (example ./runner sample5)
-    ```    
+    ```
     ./runner <sample-dir-name>
     ```

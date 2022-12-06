@@ -9,22 +9,22 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-ARG NOTATION_VERSION="0.11.0-alpha.4"
+ARG NOTATION_VERSION="0.12.0-beta.1.dev.20221204"
 RUN curl -Lo notation.tar.gz https://github.com/notaryproject/notation/releases/download/v${NOTATION_VERSION}/notation_${NOTATION_VERSION}_linux_amd64.tar.gz \
     && tar -zxf notation.tar.gz \
     && mv ./notation /usr/local/bin/notation \
     && rm -rf ./notation.tar.gz
-   
+
 RUN curl -Lo notation_0.9.0-alpha.1_linux_amd64.tar.gz https://github.com/notaryproject/notation/releases/download/v0.9.0-alpha.1/notation_0.9.0-alpha.1_linux_amd64.tar.gz \
     && mkdir -p notation-old-install \
     && tar -zxf notation_0.9.0-alpha.1_linux_amd64.tar.gz -C notation-old-install \
     && mv ./notation-old-install/* /home/vscode \
     && rm -rf ./notation_0.9.0-alpha.1_linux_amd64.tar.gz
 
-ARG ORAS_VERSION="0.15.0"
-RUN curl -LO https://github.com/oras-project/oras/releases/download/v0.15.0/oras_${ORAS_VERSION}_linux_amd64.tar.gz \
+ARG ORAS_VERSION="0.16.0"
+RUN curl -LO https://github.com/oras-project/oras/releases/download/v${ORAS_VERSION}/oras_${ORAS_VERSION}_linux_amd64.tar.gz \
     && mkdir -p oras-install \
-    && tar -zxf oras_0.15.0_*.tar.gz -C oras-install \
+    && tar -zxf oras_${ORAS_VERSION}_*.tar.gz -C oras-install \
     && mv oras-install/oras /usr/local/bin/
 
 RUN curl -Lo sbom-tool https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-linux-x64 \

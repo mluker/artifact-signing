@@ -16,11 +16,10 @@ A playground for working with:
 2. Launch the devcontainer via codespaces
 3. Export the following ENV vars
     ```
-    export ACR_NAME=samplelacr
+    export ACR_NAME=mslacr
     export REGISTRY=${ACR_NAME}.azurecr.io
     export REPONAME=helloworld
     export REPO=${REGISTRY}/${REPONAME}
-    #export NOTATION_PATH_ROOT="/home/vscode/.config/notation/truststore/x509/ca"
     export NOTATION_PATH_ROOT="/home/vscode/.config/notation"
     export NOTATION_USERNAME=00000000-0000-0000-0000-000000000000
     export SBOM_ARTIFACT_TYPE=application/spdx+json

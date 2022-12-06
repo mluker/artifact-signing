@@ -13,3 +13,6 @@ docker push $IMAGE
 
 # sign image
 notation sign $IMAGE -k $REGISTRY
+
+# discover the image to show the tree in the console
+oras discover $IMAGE -o tree

@@ -22,7 +22,8 @@ A playground for working with:
     export REPO=${REGISTRY}/${REPONAME}
     export NOTATION_PATH_ROOT="/home/vscode/.config/notation"
     export NOTATION_USERNAME=00000000-0000-0000-0000-000000000000
-    export SBOM_ARTIFACT_TYPE=application/spdx+json
+    export SBOM_ARTIFACT_TYPE=org.example.sbom.v0
+    export SBOM_SPDX_MEDIA_TYPE=application/spdx+json
     ```
 4. Login so ORAS and Notation can use the auth token
     ```

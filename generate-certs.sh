@@ -31,8 +31,6 @@ notation key delete $REGISTRY
 rm $NOTATION_PATH_ROOT/localkeys/$REGISTRY.crt
 rm $NOTATION_PATH_ROOT/localkeys/$REGISTRY.key
 
-$NOTATION_PATH_ROOT/truststore/x509/ca/$REGISTRY/$REGISTRY.crt
-
 # empty trust store
 rm $NOTATION_PATH_ROOT/key/notationv09.key
 rm $NOTATION_PATH_ROOT/certificate/notationv09.crt

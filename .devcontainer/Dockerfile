@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-ARG NOTATION_VERSION="0.12.0-beta.1.dev.20221204"
+ARG NOTATION_VERSION="v1.0.0-rc.1"
 RUN curl -Lo notation.tar.gz https://github.com/notaryproject/notation/releases/download/v${NOTATION_VERSION}/notation_${NOTATION_VERSION}_linux_amd64.tar.gz \
     && tar -zxf notation.tar.gz \
     && mv ./notation /usr/local/bin/notation \

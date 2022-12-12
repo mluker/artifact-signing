@@ -12,7 +12,7 @@ docker build -t $IMAGE .
 docker push $IMAGE
 
 # sign image
-notation sign $IMAGE -k $REGISTRY
+notation sign $IMAGE@$(docker manifest inspect $IMAGE -v | jq -r '.Descriptor.digest') -k $REGISTRY
 
 # discover the image to show the tree in the console
 oras discover $IMAGE -o tree

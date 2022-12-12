@@ -12,7 +12,7 @@ docker build -t $IMAGE .
 docker push $IMAGE
 
 # sign image
-notation sign -k $REGISTRY $IMAGE
+notation sign $IMAGE@$(docker manifest inspect $IMAGE -v | jq -r '.Descriptor.digest') -k $REGISTRY
 
 # generate sbom
 sbom-tool generate -b ./assets -bc ./src/myapp -pn ${REPONAME} -m ./sboms -pv 1.0 -ps acme -nsu ${REPONAME} -nsb https://${REGISTRY} -D true -V

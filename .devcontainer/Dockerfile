@@ -31,6 +31,12 @@ RUN curl -Lo sbom-tool https://github.com/microsoft/sbom-tool/releases/latest/do
     && chmod +x sbom-tool \
     && mv sbom-tool /usr/local/bin/
 
+ARG TRIVY_VERSION="0.35.0"
+RUN curl -LO https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz \    
+    && mkdir -p trivy-install \
+    && tar -zxf trivy_${TRIVY_VERSION}_*.tar.gz -C trivy-install \
+    && mv trivy-install/trivy /usr/local/bin/
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends protobuf-compiler libprotobuf-dev

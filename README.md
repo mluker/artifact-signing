@@ -3,6 +3,7 @@ A playground for working with:
 * Notation (notaryv2)
 * SBOMS (sbom-tool)
 * ORAS
+* Trivy
 
 ## Sample overview
 * Sample1: Unsigned image
@@ -24,6 +25,8 @@ A playground for working with:
     export NOTATION_USERNAME=00000000-0000-0000-0000-000000000000
     export SBOM_ARTIFACT_TYPE=org.example.sbom.v0
     export SBOM_SPDX_MEDIA_TYPE=application/spdx+json
+    export TRIVY_ARTIFACT_TYPE=vnd.aquasecurity.trivy.report.sarif.v1
+    export TRIVY_SARIF_MEDIA_TYPE=application/sarif+json
     ```
 4. Login so ORAS and Notation can use the auth token
     ```

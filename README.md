@@ -6,11 +6,12 @@ A playground for working with:
 * Trivy
 
 ## Sample overview
-* Sample1: Unsigned image
-* Sample2: Signed image
-* Sample3: Signed image with sbom
-* Sample4: Signed image with signed sbom
-* Sample5: Signed image using notation v0.9
+* Sample1:  Unsigned image
+* Sample2:  Signed image
+* Sample3:  Signed image with sbom
+* Sample4:  Signed image with signed sbom
+* Sample5:  Signed image using notation v0.9
+* Sample99: Signed image, signed sbom, signed trivy scan results
 
 ## How to get up and running
 1. You must have an existing ACR (update the 'ACR_NAME' below to the name of your ACR)

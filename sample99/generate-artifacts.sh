@@ -29,6 +29,9 @@ trivy image --format sarif --output ./trivy-scans/trivy-scan.sarif $IMAGE
 # attach scan results
 oras attach --artifact-type $TRIVY_ARTIFACT_TYPE $IMAGE ./trivy-scans/trivy-scan.sarif:$TRIVY_SARIF_MEDIA_TYPE
 
+# sign scan results
+notation sign $IMAGE@$(oras discover -o json --artifact-type $TRIVY_ARTIFACT_TYPE $IMAGE | jq -r ".manifests[0].digest") -k $REGISTRY
+
 # discover the image to show the tree in the console
 oras discover $IMAGE -o tree
 
